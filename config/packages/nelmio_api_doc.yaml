@@ -9,10 +9,40 @@ nelmio_api_doc:
             schemas:
                 error:
                     type: object
+                    description: Error body in RFC 7807 format (Symfony serializer). In debug mode it also carries class and trace.
+                    required: [title, status, detail]
                     properties:
-                        error:
+                        type:
                             type: string
-                            example: 'The body must have an "orders" array.'
+                            example: https://tools.ietf.org/html/rfc2616#section-10
+                        title:
+                            type: string
+                            example: Validation Failed
+                        status:
+                            type: integer
+                            example: 422
+                        detail:
+                            type: string
+                            example: 'orders[0].email: This value is not a valid email address.'
+                        violations:
+                            type: array
+                            description: Only present on validation errors (422).
+                            items:
+                                type: object
+                                properties:
+                                    propertyPath:
+                                        type: string
+                                        example: 'orders[0].email'
+                                    title:
+                                        type: string
+                                        example: This value is not a valid email address.
+                                    template:
+                                        type: string
+                                    parameters:
+                                        type: object
+                                    type:
+                                        type: string
+                                        example: urn:uuid:bd79c0ab-ddba-46cc-a703-a7a4b08de310
     areas:
         default:
             path_patterns:

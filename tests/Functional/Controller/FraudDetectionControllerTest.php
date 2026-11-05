@@ -34,6 +34,24 @@ final class FraudDetectionControllerTest extends WebTestCase
         $client->request('POST', self::URL, [], [], self::JSON, '{not json');
 
         self::assertResponseStatusCodeSame(400);
+        self::assertResponseHeaderSame('Content-Type', 'application/json');
+        $body = json_decode($client->getResponse()->getContent(), true, flags: \JSON_THROW_ON_ERROR);
+        self::assertSame(400, $body['status']);
+        self::assertArrayHasKey('detail', $body);
+    }
+
+    public function testValidationErrorsAreJsonWithViolations(): void
+    {
+        $client = static::createClient();
+        $client->request('POST', self::URL, [], [], self::JSON, json_encode([
+            'orders' => [[...$this->order(1, 1, 'bugs@bunny.com', '12345689010'), 'email' => 'not-an-email']],
+        ], \JSON_THROW_ON_ERROR));
+
+        self::assertResponseStatusCodeSame(422);
+        self::assertResponseHeaderSame('Content-Type', 'application/json');
+        $body = json_decode($client->getResponse()->getContent(), true, flags: \JSON_THROW_ON_ERROR);
+        self::assertSame(422, $body['status']);
+        self::assertSame('orders[0].email', $body['violations'][0]['propertyPath']);
     }
 
     public function testMissingOrdersIsUnprocessable(): void

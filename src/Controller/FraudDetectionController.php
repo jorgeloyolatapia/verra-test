@@ -60,7 +60,7 @@ final class FraudDetectionController extends AbstractController
     )]
     #[OA\Response(response: Response::HTTP_BAD_REQUEST, description: 'The body is not valid JSON.', content: new OA\JsonContent(ref: '#/components/schemas/error'))]
     #[OA\Response(response: Response::HTTP_UNPROCESSABLE_ENTITY, description: 'The "orders" array is missing or an order is invalid.', content: new OA\JsonContent(ref: '#/components/schemas/error'))]
-    #[Route('/api/fraud-detection', name: 'api_fraud_detection', methods: ['POST'])]
+    #[Route('/api/fraud-detection', name: 'api_fraud_detection', methods: ['POST'], format: 'json')]
     public function __invoke(#[MapRequestPayload] FraudDetectionRequest $request): JsonResponse
     {
         return $this->json(['fraudulentOrders' => $this->fraudDetectionHandler->handle($request->orders)]);
