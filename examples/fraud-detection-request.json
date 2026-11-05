@@ -1,0 +1,12 @@
+{
+  "orders": [
+    {"orderId": 1, "dealId": 1, "email": "bugs@bunny.com", "streetAddress": "123 Sesame St.", "city": "New York", "state": "NY", "zipCode": "10011", "creditCard": "12345689010"},
+    {"orderId": 2, "dealId": 1, "email": "elmer@fudd.com", "streetAddress": "123 Sesame St.", "city": "New York", "state": "NY", "zipCode": "10011", "creditCard": "10987654321"},
+    {"orderId": 3, "dealId": 2, "email": "bugs@bunny.com", "streetAddress": "123 Sesame St.", "city": "New York", "state": "NY", "zipCode": "10011", "creditCard": "12345689010"},
+    {"orderId": 4, "dealId": 3, "email": "B.ugs+promo@Bunny.com", "streetAddress": "5 Elm Rd.", "city": "Chicago", "state": "Illinois", "zipCode": "60601", "creditCard": "4111 1111 1111 1111"},
+    {"orderId": 5, "dealId": 3, "email": "bugs@bunny.com", "streetAddress": "99 Other Ave", "city": "Chicago", "state": "IL", "zipCode": "60601", "creditCard": "4222-2222-2222-2222"},
+    {"orderId": 6, "dealId": 4, "email": "daffy@duck.com", "streetAddress": "7 Pine Street", "city": "Los Angeles", "state": "California", "zipCode": "90001", "creditCard": "5500 0000 0000 0004"},
+    {"orderId": 7, "dealId": 4, "email": "porky@pig.com", "streetAddress": "7 pine st", "city": "los angeles", "state": "CA", "zipCode": "90001", "creditCard": "5500 0000 0000 0012"},
+    {"orderId": 8, "dealId": 5, "email": "tweety@bird.com", "streetAddress": "1 Cage Ln", "city": "Boston", "state": "MA", "zipCode": "02101", "creditCard": "6011000000000004"}
+  ]
+}

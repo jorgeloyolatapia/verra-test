@@ -54,3 +54,4 @@
 
 ###< phpunit/phpunit ###
 .idea/
+.idea/verra-test.iml

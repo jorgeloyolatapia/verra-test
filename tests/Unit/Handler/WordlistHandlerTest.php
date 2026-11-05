@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Handler;
+namespace App\Tests\Unit\Handler;
 
 use App\Handler\WordlistHandler;
 use PHPUnit\Framework\TestCase;
